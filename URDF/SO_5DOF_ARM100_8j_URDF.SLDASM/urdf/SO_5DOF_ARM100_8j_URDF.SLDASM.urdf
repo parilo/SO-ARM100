@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
      Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="SO_5DOF_ARM100_8j_URDF.SLDASM">
+  <link name="Root" />
   <link
     name="Base">
     <inertial>
@@ -26,7 +27,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Base.STL" />
+          filename="../meshes/Base.STL" />
       </geometry>
       <material
         name="">
@@ -40,10 +41,15 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Base.STL" />
+          filename="../meshes/Base.STL" />
       </geometry>
     </collision>
   </link>
+  <joint name="fixed_joint" type="fixed">
+      <parent link="Root"/>
+      <child link="Base"/>
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+  </joint>
   <link
     name="Rotation_Pitch">
     <inertial>
@@ -66,7 +72,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Rotation_Pitch.STL" />
+          filename="../meshes/Rotation_Pitch.STL" />
       </geometry>
       <material
         name="">
@@ -80,7 +86,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Rotation_Pitch.STL" />
+          filename="../meshes/Rotation_Pitch.STL" />
       </geometry>
     </collision>
   </link>
@@ -96,6 +102,7 @@
       link="Rotation_Pitch" />
     <axis
       xyz="0 1 0" />
+    <limit effort="200.0" velocity="2"  lower="-1.57" upper="1.57" />
   </joint>
   <link
     name="Upper_Arm">
@@ -119,7 +126,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Upper_Arm.STL" />
+          filename="../meshes/Upper_Arm.STL" />
       </geometry>
       <material
         name="">
@@ -133,7 +140,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Upper_Arm.STL" />
+          filename="../meshes/Upper_Arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -142,13 +149,14 @@
     type="continuous">
     <origin
       xyz="0 0.1025 0.0306"
-      rpy="0 0 0" />
+      rpy="1.5708 0 0" />
     <parent
       link="Rotation_Pitch" />
     <child
       link="Upper_Arm" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
+    <limit effort="200.0" velocity="2"  lower="0" upper="3.4" />
   </joint>
   <link
     name="Lower_Arm">
@@ -172,7 +180,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Lower_Arm.STL" />
+          filename="../meshes/Lower_Arm.STL" />
       </geometry>
       <material
         name="">
@@ -186,7 +194,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Lower_Arm.STL" />
+          filename="../meshes/Lower_Arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -195,13 +203,14 @@
     type="continuous">
     <origin
       xyz="0 0.11257 0.028"
-      rpy="0 0 0" />
+      rpy="-1.5708 0 0" />
     <parent
       link="Upper_Arm" />
     <child
       link="Lower_Arm" />
     <axis
       xyz="1 0 0" />
+    <limit effort="200.0" velocity="2" lower="0" upper="3.14" />
   </joint>
   <link
     name="Wrist_Pitch_Roll">
@@ -225,7 +234,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Wrist_Pitch_Roll.STL" />
+          filename="../meshes/Wrist_Pitch_Roll.STL" />
       </geometry>
       <material
         name="">
@@ -239,7 +248,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Wrist_Pitch_Roll.STL" />
+          filename="../meshes/Wrist_Pitch_Roll.STL" />
       </geometry>
     </collision>
   </link>
@@ -248,13 +257,14 @@
     type="continuous">
     <origin
       xyz="0 0.0052 0.1349"
-      rpy="0 0 0" />
+      rpy="-1.5708 0 0" />
     <parent
       link="Lower_Arm" />
     <child
       link="Wrist_Pitch_Roll" />
     <axis
       xyz="1 0 0" />
+    <limit effort="200.0" velocity="2" lower="-1.57" upper="1.57" />
   </joint>
   <link
     name="Fixed_Jaw">
@@ -278,7 +288,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Fixed_Jaw.STL" />
+          filename="../meshes/Fixed_Jaw.STL" />
       </geometry>
       <material
         name="">
@@ -292,7 +302,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Fixed_Jaw.STL" />
+          filename="../meshes/Fixed_Jaw.STL" />
       </geometry>
     </collision>
   </link>
@@ -301,13 +311,14 @@
     type="continuous">
     <origin
       xyz="0 -0.0601 0"
-      rpy="0 0 0" />
+      rpy="0 1.5708 0" />
     <parent
       link="Wrist_Pitch_Roll" />
     <child
       link="Fixed_Jaw" />
     <axis
       xyz="0 1 0" />
+    <limit effort="200.0" velocity="2" lower="-2.5" upper="2.5" />
   </joint>
   <link
     name="Moving Jaw">
@@ -331,7 +342,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Moving Jaw.STL" />
+          filename="../meshes/Moving Jaw.STL" />
       </geometry>
       <material
         name="">
@@ -345,7 +356,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Moving Jaw.STL" />
+          filename="../meshes/Moving Jaw.STL" />
       </geometry>
     </collision>
   </link>
@@ -361,5 +372,6 @@
       link="Moving Jaw" />
     <axis
       xyz="0 0 1" />
+    <limit effort="200.0" velocity="2"  lower="0" upper="1.57" />
   </joint>
 </robot>
