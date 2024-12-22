@@ -101,7 +101,7 @@
     <child
       link="Rotation_Pitch" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit effort="200.0" velocity="2"  lower="-1.57" upper="1.57" />
   </joint>
   <link
@@ -317,7 +317,7 @@
     <child
       link="Fixed_Jaw" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit effort="200.0" velocity="2" lower="-2.5" upper="2.5" />
   </joint>
   <link
